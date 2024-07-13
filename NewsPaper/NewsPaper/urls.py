@@ -19,7 +19,14 @@ from django.urls import path
 from django.contrib import admin
 from django.urls import path, include
 
+from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to the Homepage!")
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('news/', include('news.urls'))
+    path('news/', include('news.urls')),
+    path('', home, name='home'),  # Добавьте эту строку для главной страницы
 ]
